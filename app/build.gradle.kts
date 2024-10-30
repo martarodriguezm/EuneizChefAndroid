@@ -4,11 +4,11 @@ plugins {
 }
 
 android {
-    namespace = "izaro.rubio.euneizchef"
+    namespace = "com.euneiz.euneizchef"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "izaro.rubio.euneizchef"
+        applicationId = "com.euneiz.euneizchef"
         minSdk = 24
         targetSdk = 34
         versionCode = 1

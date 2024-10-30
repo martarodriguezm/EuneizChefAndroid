@@ -1,4 +1,4 @@
-package izaro.rubio.euneizchef
+package com.euneiz.euneizchef
 
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
