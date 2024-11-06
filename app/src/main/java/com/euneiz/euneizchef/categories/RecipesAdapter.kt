@@ -2,7 +2,10 @@ package com.euneiz.euneizchef.categories
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
+import com.euneiz.euneizchef.R
 import com.euneiz.euneizchef.databinding.ItemRecipeBinding
 
 class RecipesAdapter : RecyclerView.Adapter<RecipesAdapter.RecipeViewHolder>() {
@@ -32,10 +35,21 @@ class RecipesAdapter : RecyclerView.Adapter<RecipesAdapter.RecipeViewHolder>() {
 
         fun bind(recipe: Recipe) {
             binding.recipeTitleTextView.text = recipe.strMeal
-            // Cargar imagen de la receta (si usas Glide o Picasso)
-            // Glide.with(binding.recipeImageView.context).load(recipe.imageUrl).into(binding.recipeImageView)
+            // Usando Glide para cargar la imagen de la receta
+            if (!recipe.strMealThumb.isNullOrEmpty()) {
+                Glide.with(binding.root.context)
+                    .load(recipe.strMealThumb)
+                    .placeholder(R.drawable.ic_placeholder_image) // Imagen por defecto
+                    .into(binding.recipeImageView)
+            } else {
+                // Si no tiene imagen, cargar una imagen por defecto
+                Glide.with(binding.root.context)
+                    .load(R.drawable.ic_placeholder_image)
+                    .into(binding.recipeImageView)
+            }
+
             binding.favoriteButton.setOnClickListener {
-                // Lógica para añadir a favoritos
+                Toast.makeText(binding.root.context, "La receta se ha añadido a favoritos", Toast.LENGTH_SHORT).show()
             }
         }
     }
