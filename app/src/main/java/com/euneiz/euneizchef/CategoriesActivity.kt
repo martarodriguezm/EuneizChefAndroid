@@ -32,6 +32,28 @@ class CategoriesActivity : AppCompatActivity() {
             insets
         }
 
+        // Configurar el BottomNavigationView
+        binding.bottomNavigationView.setOnNavigationItemSelectedListener { item ->
+            when (item.itemId) {
+                R.id.nav_home -> {
+                    // Navegar a MainActivity
+                    val intent = Intent(this, MainActivity::class.java)
+                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK)
+                    startActivity(intent)
+                    true
+                }
+                R.id.nav_favorites -> {
+                    // Agrega aquí el Intent para abrir la actividad de Favoritos
+                    true
+                }
+                R.id.nav_categories -> {
+                    // Ya estamos en CategoriesActivity
+                    true
+                }
+                else -> false
+            }
+        }
+
         // Agregar un botón para cada categoría en el LinearLayout
         categories.forEach { category ->
             val button = Button(this).apply {
