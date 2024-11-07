@@ -32,24 +32,27 @@ class CategoriesActivity : AppCompatActivity() {
             insets
         }
 
-        // Configurar el BottomNavigationView
+        // Marcar el ítem de categorías en el BottomNavigationView
+        binding.bottomNavigationView.selectedItemId = R.id.nav_categories
+
+        // Configurar el listener de navegación
         binding.bottomNavigationView.setOnNavigationItemSelectedListener { item ->
             when (item.itemId) {
                 R.id.nav_home -> {
-                    // Navegar a MainActivity
-                    val intent = Intent(this, MainActivity::class.java)
-                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK)
-                    startActivity(intent)
+                    startActivity(Intent(this, MainActivity::class.java).apply {
+                        flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP
+                    })
                     true
                 }
+
                 R.id.nav_favorites -> {
-                    // Agrega aquí el Intent para abrir la actividad de Favoritos
+                    startActivity(Intent(this, FavoritesActivity::class.java).apply {
+                        flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP
+                    })
                     true
                 }
-                R.id.nav_categories -> {
-                    // Ya estamos en CategoriesActivity
-                    true
-                }
+
+                R.id.nav_categories -> true // Ya estamos en Categorías
                 else -> false
             }
         }
@@ -71,5 +74,10 @@ class CategoriesActivity : AppCompatActivity() {
         val intent = Intent(this, CategoryRecipesActivity::class.java)
         intent.putExtra("category", category)
         startActivity(intent)
+    }
+    override fun onResume() {
+        super.onResume()
+        // Forzar que el ítem "Categories" esté seleccionado cada vez que se vuelve a esta actividad
+        binding.bottomNavigationView.selectedItemId = R.id.nav_categories
     }
 }

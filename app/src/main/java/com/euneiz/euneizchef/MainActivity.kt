@@ -25,25 +25,34 @@ class MainActivity : AppCompatActivity() {
             insets
         }
 
-        // Configurar el BottomNavigationView
+        // Marcar el ítem de favoritos en el BottomNavigationView
+        binding.bottomNavigationView.selectedItemId = R.id.nav_home
+
+        // Configurar el listener de navegación
         binding.bottomNavigationView.setOnNavigationItemSelectedListener { item ->
             when (item.itemId) {
-                R.id.nav_home -> {
-                    // Ya estamos en MainActivity, no hacer nada o reiniciar si es necesario
-                    true
-                }
+                R.id.nav_home -> true //Ya estamos en Home
+                //Navegar a Favorites
                 R.id.nav_favorites -> {
-                    // Puedes agregar aquí el Intent para abrir la actividad de Favoritos
+                    startActivity(Intent(this, FavoritesActivity::class.java).apply {
+                        flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP
+                    })
                     true
                 }
+                //Navegar a Categories
                 R.id.nav_categories -> {
-                    // Navegar a CategoriesActivity
-                    val intent = Intent(this, CategoriesActivity::class.java)
-                    startActivity(intent)
+                    startActivity(Intent(this, CategoriesActivity::class.java).apply {
+                        flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP
+                    })
                     true
                 }
                 else -> false
             }
         }
+    }
+    override fun onResume() {
+        super.onResume()
+        // Forzar que el ítem "Home" esté seleccionado cada vez que se vuelve a esta actividad
+        binding.bottomNavigationView.selectedItemId = R.id.nav_home
     }
 }
