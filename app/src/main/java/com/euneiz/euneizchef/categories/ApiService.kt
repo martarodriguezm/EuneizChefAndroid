@@ -15,6 +15,12 @@ interface ApiService {
         @Query("c") category: String
     ): Call<RecipesResponse>
 
+    // Endpoint para obtener detalles de una receta por ID
+    @GET("lookup.php")
+    fun getRecipeDetails(
+        @Query("i") recipeId: String
+    ): Call<RecipeDetailsResponse>
+
     companion object {
         private const val BASE_URL = "https://www.themealdb.com/api/json/v1/1/"
 

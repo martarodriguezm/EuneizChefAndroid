@@ -12,10 +12,9 @@ class RecipesAdapter : RecyclerView.Adapter<RecipesAdapter.RecipeViewHolder>() {
 
     private val recipes = mutableListOf<Recipe>()
 
-    fun submitList(newRecipes: List<Recipe>) {
-        recipes.clear()
-        recipes.addAll(newRecipes)
-        notifyDataSetChanged()
+    fun addRecipe(recipe: Recipe) {
+        recipes.add(recipe)
+        notifyItemInserted(recipes.size - 1)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecipeViewHolder {
@@ -35,6 +34,9 @@ class RecipesAdapter : RecyclerView.Adapter<RecipesAdapter.RecipeViewHolder>() {
 
         fun bind(recipe: Recipe) {
             binding.recipeTitleTextView.text = recipe.strMeal
+            binding.recipeAreaTextView.text= recipe.strArea
+            binding.recipeCategoryTextView.text= recipe.strCategory
+
             // Usando Glide para cargar la imagen de la receta
             if (!recipe.strMealThumb.isNullOrEmpty()) {
                 Glide.with(binding.root.context)
@@ -48,8 +50,14 @@ class RecipesAdapter : RecyclerView.Adapter<RecipesAdapter.RecipeViewHolder>() {
                     .into(binding.recipeImageView)
             }
 
+            //Configuración Botón Favoritos
             binding.favoriteButton.setOnClickListener {
-                Toast.makeText(binding.root.context, "La receta se ha añadido a favoritos", Toast.LENGTH_SHORT).show()
+                it.isSelected = !it.isSelected
+                if (it.isSelected) {
+                    Toast.makeText(binding.root.context, "La receta se ha añadido a favoritos", Toast.LENGTH_SHORT).show()
+                } else {
+                    Toast.makeText(binding.root.context, "La receta se ha eliminado de favoritos", Toast.LENGTH_SHORT).show()
+                }
             }
         }
     }

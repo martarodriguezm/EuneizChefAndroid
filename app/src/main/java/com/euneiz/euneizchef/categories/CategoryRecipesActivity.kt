@@ -46,8 +46,9 @@ class CategoryRecipesActivity : AppCompatActivity() {
             override fun onResponse(call: Call<RecipesResponse>, response: Response<RecipesResponse>) {
                 if (response.isSuccessful) {
                     val recipes = response.body()?.meals
-                    if (recipes != null) {
-                        recipesAdapter.submitList(recipes)
+                    recipes?.forEach { recipe ->
+                        // Cargar detalles de cada receta
+                        loadRecipeDetails(recipe.idMeal)
                     }
                 } else {
                     Log.e("CategoryRecipesActivity", "Error en la respuesta de la API")
@@ -56,6 +57,25 @@ class CategoryRecipesActivity : AppCompatActivity() {
 
             override fun onFailure(call: Call<RecipesResponse>, t: Throwable) {
                 Log.e("CategoryRecipesActivity", "Error al cargar recetas", t)
+            }
+        })
+    }
+
+    private fun loadRecipeDetails(recipeId: String) {
+        apiService.getRecipeDetails(recipeId).enqueue(object : Callback<RecipeDetailsResponse> {
+            override fun onResponse(call: Call<RecipeDetailsResponse>, response: Response<RecipeDetailsResponse>) {
+                if (response.isSuccessful) {
+                    val recipeDetails = response.body()?.meals?.firstOrNull()
+                    recipeDetails?.let {
+                        recipesAdapter.addRecipe(it)  // Agrega el detalle al adaptador
+                    }
+                } else {
+                    Log.e("CategoryRecipesActivity", "Error en los detalles de la API")
+                }
+            }
+
+            override fun onFailure(call: Call<RecipeDetailsResponse>, t: Throwable) {
+                Log.e("CategoryRecipesActivity", "Error al cargar detalles de la receta", t)
             }
         })
     }
