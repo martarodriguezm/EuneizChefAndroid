@@ -16,15 +16,23 @@
         android:theme="@style/Theme.EuneizChef"
         tools:targetApi="31">
         <activity
+            android:name=".categories.SearchResultsActivity"
+            android:exported="false"
+            android:label="Search Recipes"
+            android:parentActivityName=".CategoriesActivity"/>
+        <activity
+            android:name=".categories.AreaRecipesActivity"
+            android:exported="false"
+            android:label="Area"
+            android:parentActivityName=".CategoriesActivity"/>
+        <activity
             android:name=".categories.CategoryRecipesActivity"
             android:exported="false"
             android:label="Category"
-            android:parentActivityName=".CategoriesActivity"/>
+            android:parentActivityName=".CategoriesActivity" />
         <activity
             android:name=".CategoriesActivity"
-            android:exported="false"
-            android:label="Categories"
-            android:parentActivityName=".MainActivity"/>
+            android:exported="false" />
         <activity
             android:name=".FavoritesActivity"
             android:exported="false" />
