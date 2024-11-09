@@ -7,10 +7,71 @@
     android:layout_height="match_parent"
     tools:context=".CategoriesActivity">
 
+    <!-- Campo de búsqueda -->
+    <EditText
+        android:id="@+id/searchEditText"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/searchButton"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:hint="Buscar recetas"
+        android:inputType="text"/>
+
+    <!-- Botón de búsqueda -->
+    <Button
+        android:id="@+id/searchButton"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:text="Buscar"/>
+
+
+    <TextView
+        android:id="@+id/textAreasSection"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/searchEditText"
+        app:layout_constraintBottom_toTopOf="@id/areaSection"
+        android:layout_marginTop="20dp"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        android:text="Por Area"/>
+
+    <HorizontalScrollView
+        android:id="@+id/areaSection"
+        app:layout_constraintTop_toBottomOf="@id/textAreasSection"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:id="@+id/areasContainer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" />
+
+    </HorizontalScrollView>
+
+    <TextView
+        android:id="@+id/textCategoriesSection"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/areaSection"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        android:text="Por Categorias"/>
+
     <!-- res/layout/activity_categories.xml -->
     <ScrollView
+        android:id="@+id/categoriesSection"
+        app:layout_constraintTop_toBottomOf="@id/textCategoriesSection"
+        app:layout_constraintBottom_toTopOf="@id/bottomNavigationView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="0dp"
         android:padding="16dp">
 
         <LinearLayout
@@ -18,8 +79,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical" />
-    </ScrollView>
 
+    </ScrollView>
 
     <!-- BottomNavigationView -->
     <com.google.android.material.bottomnavigation.BottomNavigationView

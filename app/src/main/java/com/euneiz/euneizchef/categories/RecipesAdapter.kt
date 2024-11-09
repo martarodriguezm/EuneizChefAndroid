@@ -17,6 +17,12 @@ class RecipesAdapter : RecyclerView.Adapter<RecipesAdapter.RecipeViewHolder>() {
         notifyItemInserted(recipes.size - 1)
     }
 
+    fun submitList(newRecipes: List<Recipe>) {
+        recipes.clear()
+        recipes.addAll(newRecipes)
+        notifyDataSetChanged()
+    }
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecipeViewHolder {
         val binding = ItemRecipeBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return RecipeViewHolder(binding)

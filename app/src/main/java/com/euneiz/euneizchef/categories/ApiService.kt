@@ -9,10 +9,22 @@ import retrofit2.http.Query
 
 interface ApiService {
 
+    // Endpoint para buscar recetas por nombre
+    @GET("search.php")
+    fun searchRecipesByName(
+        @Query("s") name: String
+    ): Call<RecipesResponse>
+
     // Endpoint para obtener recetas por categoría
     @GET("filter.php")
     fun getRecipesByCategory(
         @Query("c") category: String
+    ): Call<RecipesResponse>
+
+    // Endpoint para obtener recetas por area
+    @GET("filter.php")
+    fun getRecipesByArea(
+        @Query("a") area: String
     ): Call<RecipesResponse>
 
     // Endpoint para obtener detalles de una receta por ID
