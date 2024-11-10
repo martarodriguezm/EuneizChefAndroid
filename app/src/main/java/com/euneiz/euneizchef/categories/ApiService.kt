@@ -1,6 +1,7 @@
 package com.euneiz.euneizchef.categories
 
-import okhttp3.OkHttpClient
+import com.euneiz.euneizchef.database.RecipeDetailsResponse
+import com.euneiz.euneizchef.database.RecipesResponse
 import retrofit2.Call
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory

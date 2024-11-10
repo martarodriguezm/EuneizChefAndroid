@@ -2,12 +2,9 @@ package com.euneiz.euneizchef.categories
 
 import android.os.Bundle
 import android.widget.Toast
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.euneiz.euneizchef.R
+import com.euneiz.euneizchef.database.RecipesResponse
 import com.euneiz.euneizchef.databinding.ActivitySearchResultsBinding
 import retrofit2.Call
 import retrofit2.Callback

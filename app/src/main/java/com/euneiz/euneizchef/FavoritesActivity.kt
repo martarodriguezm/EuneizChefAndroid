@@ -1,12 +1,18 @@
 package com.euneiz.euneizchef
 
+import com.euneiz.euneizchef.database.FavoriteRecipe
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.euneiz.euneizchef.database.DatabaseProvider
 import com.euneiz.euneizchef.databinding.ActivityFavoritesBinding
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 class FavoritesActivity : AppCompatActivity() {
     private lateinit var binding: ActivityFavoritesBinding
@@ -47,9 +53,25 @@ class FavoritesActivity : AppCompatActivity() {
         }
     }
 
-    override fun onResume() {
-        super.onResume()
-        // Forzar que el ítem "Favorites" esté seleccionado cada vez que se vuelve a esta actividad
-        binding.bottomNavigationView.selectedItemId = R.id.nav_favorites
+    private fun testDatabaseOperations(recipeId: Int) {
+        CoroutineScope(Dispatchers.IO).launch {
+            try {
+                // Accede a la base de datos usando `applicationContext`
+                val dao = DatabaseProvider.getDatabase(applicationContext).favoriteRecipeDao()
+                val favoriteRecipe = dao.getFavoriteById(recipeId)
+
+                if (favoriteRecipe == null) {
+                    // Añadir a favoritos
+                    dao.addFavorite(FavoriteRecipe(recipeId, "Recipe Name", "Recipe Description"))
+                    Log.d("DatabaseTest", "Receta añadida a favoritos.")
+                } else {
+                    // Eliminar de favoritos
+                    dao.removeFavorite(favoriteRecipe)
+                    Log.d("DatabaseTest", "Receta eliminada de favoritos.")
+                }
+            } catch (e: Exception) {
+                Log.e("DatabaseTest", "Error en operaciones de prueba de la base de datos", e)
+            }
+        }
     }
 }
