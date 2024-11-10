@@ -1,6 +1,5 @@
-package com.euneiz.euneizchef.categories
+package com.euneiz.euneizchef
 
-import okhttp3.OkHttpClient
 import retrofit2.Call
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory

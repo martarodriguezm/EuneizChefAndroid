@@ -7,7 +7,11 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.euneiz.euneizchef.ApiService
 import com.euneiz.euneizchef.R
+import com.euneiz.euneizchef.RecipeDetailsResponse
+import com.euneiz.euneizchef.RecipesResponse
+import com.euneiz.euneizchef.database.RecipeDatabase
 import com.euneiz.euneizchef.databinding.ActivityCategoryRecipesBinding
 import retrofit2.Call
 import retrofit2.Callback
@@ -17,6 +21,9 @@ class CategoryRecipesActivity : AppCompatActivity() {
     private lateinit var binding: ActivityCategoryRecipesBinding
     private lateinit var recipesAdapter: RecipesAdapter
     private val apiService = ApiService.create()
+
+    private lateinit var db: RecipeDatabase
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,9 +38,13 @@ class CategoryRecipesActivity : AppCompatActivity() {
             insets
         }
 
+        // Inicializar la base de datos Room
+        db = RecipeDatabase.getDatabase(this)
+        val favoriteDao = db.favoriteDao()  // Obtener el DAO
+
         // Configuración del RecyclerView
         binding.recipesRecyclerView.layoutManager = LinearLayoutManager(this)
-        recipesAdapter = RecipesAdapter()
+        recipesAdapter = RecipesAdapter(favoriteDao)
         binding.recipesRecyclerView.adapter = recipesAdapter
 
         // Obtiener la categoría desde el Intent

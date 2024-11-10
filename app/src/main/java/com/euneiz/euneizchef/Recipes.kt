@@ -1,4 +1,4 @@
-package com.euneiz.euneizchef.categories
+package com.euneiz.euneizchef
 
 data class Recipe(
     val idMeal: String,

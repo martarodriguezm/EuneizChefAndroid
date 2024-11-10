@@ -2,12 +2,11 @@ package com.euneiz.euneizchef.categories
 
 import android.os.Bundle
 import android.widget.Toast
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.euneiz.euneizchef.R
+import com.euneiz.euneizchef.ApiService
+import com.euneiz.euneizchef.RecipesResponse
+import com.euneiz.euneizchef.database.RecipeDatabase
 import com.euneiz.euneizchef.databinding.ActivitySearchResultsBinding
 import retrofit2.Call
 import retrofit2.Callback
@@ -19,14 +18,20 @@ class SearchResultsActivity : AppCompatActivity() {
     private lateinit var recipesAdapter: RecipesAdapter
     private val apiService = ApiService.create()
 
+    private lateinit var db: RecipeDatabase
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivitySearchResultsBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        // Inicializar la base de datos Room
+        db = RecipeDatabase.getDatabase(this)
+        val favoriteDao = db.favoriteDao()  // Obtener el DAO
+
         // Configurar el RecyclerView
         binding.recipesRecyclerView.layoutManager = LinearLayoutManager(this)
-        recipesAdapter = RecipesAdapter()
+        recipesAdapter = RecipesAdapter(favoriteDao)
         binding.recipesRecyclerView.adapter = recipesAdapter
 
         // Obtener el término de búsqueda inicial desde el Intent
