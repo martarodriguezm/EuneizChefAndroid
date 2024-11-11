@@ -15,19 +15,31 @@
         app:layout_constraintEnd_toStartOf="@id/searchButton"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp"
         android:hint="Buscar recetas"
-        android:inputType="text"/>
+        android:inputType="text"
+        android:background="@drawable/search_edittext_background"
+        android:padding="10dp"
+        android:drawablePadding="8dp"/>
 
     <!-- Botón de búsqueda -->
-    <Button
+    <ImageButton
         android:id="@+id/searchButton"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="16dp"
-        android:text="Buscar"/>
+        android:layout_width="50dp"
+        android:layout_height="45dp"
+        android:background="@drawable/search_button_background"
+        android:src="@drawable/ic_search_white"
+        android:contentDescription="Buscar"
+        android:layout_marginRight="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp"
+        android:padding="12dp"
+        android:scaleType="centerInside"/>
 
 
     <TextView
@@ -37,7 +49,9 @@
         app:layout_constraintTop_toBottomOf="@id/searchEditText"
         app:layout_constraintBottom_toTopOf="@id/areaSection"
         android:layout_marginTop="20dp"
+        android:padding="10dp"
         android:textStyle="bold"
+        android:textSize="16dp"
         android:textColor="@color/black"
         android:text="Por Area"/>
 
@@ -46,7 +60,8 @@
         app:layout_constraintTop_toBottomOf="@id/textAreasSection"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:fillViewport="true">
+        android:fillViewport="true"
+        android:padding="10dp">
 
         <LinearLayout
             android:id="@+id/areasContainer"
@@ -61,9 +76,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@id/areaSection"
+        android:padding="10dp"
         android:textStyle="bold"
+        android:textSize="16dp"
         android:textColor="@color/black"
-        android:text="Por Categorias"/>
+        android:text="Por Categoría"/>
 
     <!-- res/layout/activity_categories.xml -->
     <ScrollView

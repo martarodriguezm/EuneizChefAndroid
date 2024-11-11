@@ -60,6 +60,7 @@ dependencies {
     //implementar librería Glide para cargar imagenes
     implementation("com.github.bumptech.glide:glide:4.15.0")
     annotationProcessor("com.github.bumptech.glide:compiler:4.15.0")
+    implementation ("com.squareup.okhttp3:okhttp:4.9.1")
 
     //implementar librería Room almacenamiento
     implementation("androidx.room:room-runtime:2.6.1")

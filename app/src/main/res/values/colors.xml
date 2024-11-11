@@ -3,6 +3,14 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="gray">#505050</color>
+    <color name="grayLight">#A2A2A2</color>
+    <color name="overlay">#7F000000</color>
+    <color name="colorPrimary">#0CB1F2</color>
+    <color name="colorPrimaryVariant">#012340</color>
+    <color name="colorOnPrimary">#F2F1EB</color>
+    <color name="colorSecondary">#F25C05</color>
+    <color name="colorSecondaryVariant">#65A603</color>
+    <color name="colorOnSecondary">#242423</color>
     <color name="categoryButtom">#E2DB5B30</color>
     <color name="areaButtom">#3F51B5</color>
 </resources>
