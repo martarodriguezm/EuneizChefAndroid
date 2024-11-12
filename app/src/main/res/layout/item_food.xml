@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical">
+
+    <TextView android:id="@+id/Food"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:textSize="20dp"
+        android:text="Titulo de la comida:"/>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:gravity="center_vertical|center_horizontal">
+
+        <ImageView
+            android:id="@+id/image"
+            android:layout_width="190dp"
+            android:layout_height="190dp"
+            android:layout_margin="16dp"
+            android:src="@drawable/ic_placeholder_image" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="Carne
+                          Entrante
+                          Italia
+                          (Descripción)"
+            android:id="@+id/textView2"/>
+    </LinearLayout>
+
+    <TextView android:id="@+id/ingredientes"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:textSize="17dp"
+        android:text="Ingredientes:"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/IngredientsView"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_marginTop="16dp"
+        android:layout_margin="30sp"/>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:gravity="center_vertical|center_horizontal">
+
+        <Button android:id="@+id/order_button"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:gravity="center"
+            android:layout_centerHorizontal="true"
+            android:backgroundTint="#FF5722"
+            android:text="Order" />
+
+        <Button android:id="@+id/cancel_button"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:gravity="center"
+            android:layout_centerHorizontal="true"
+            android:text="Cancel" />
+    </LinearLayout>
+
+    <!-- BottomNavigationView -->
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottomNavigationView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:menu="@menu/bottom_nav_menu"/>
+
+</LinearLayout>
