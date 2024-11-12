@@ -8,7 +8,7 @@
     android:layout_height="match_parent"
     tools:context=".categories.SearchResultsActivity">
 
-    <!-- Campo de búsqueda -->
+    !-- Campo de búsqueda -->
     <EditText
         android:id="@+id/searchEditText"
         app:layout_constraintTop_toTopOf="parent"
@@ -16,21 +16,31 @@
         app:layout_constraintEnd_toStartOf="@id/searchButton"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="60dp"
-        android:layout_marginEnd="8dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="70dp"
+        android:layout_marginBottom="16dp"
         android:hint="Buscar recetas"
-        android:inputType="text"/>
+        android:inputType="text"
+        android:background="@drawable/search_edittext_background"
+        android:padding="10dp"
+        android:drawablePadding="8dp"/>
 
     <!-- Botón de búsqueda -->
-    <Button
+    <ImageButton
         android:id="@+id/searchButton"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="60dp"
-        android:layout_marginEnd="16dp"
-        android:text="Buscar"/>
+        android:layout_width="50dp"
+        android:layout_height="45dp"
+        android:background="@drawable/search_button_background"
+        android:src="@drawable/ic_search_white"
+        android:contentDescription="Buscar"
+        android:layout_marginRight="16dp"
+        android:layout_marginTop="70dp"
+        android:layout_marginBottom="16dp"
+        android:padding="12dp"
+        android:scaleType="centerInside"/>
 
     <!-- RecyclerView para mostrar los resultados -->
     <androidx.recyclerview.widget.RecyclerView

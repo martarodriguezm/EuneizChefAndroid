@@ -32,12 +32,15 @@
             android:parentActivityName=".CategoriesActivity" />
         <activity
             android:name=".CategoriesActivity"
+            android:label="Discover Recipes"
             android:exported="false" />
         <activity
             android:name=".FavoritesActivity"
+            android:label="My Favorites"
             android:exported="false" />
         <activity
             android:name=".MainActivity"
+            android:label="Welcome to EuneizChef"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

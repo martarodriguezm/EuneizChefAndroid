@@ -5,12 +5,17 @@
     <color name="gray">#505050</color>
     <color name="grayLight">#A2A2A2</color>
     <color name="overlay">#7F000000</color>
-    <color name="colorPrimary">#0CB1F2</color>
-    <color name="colorPrimaryVariant">#012340</color>
+    <color name="colorPrimary">#012340</color>
+    <color name="colorPrimaryVariant">#E15DC3EB</color>
     <color name="colorOnPrimary">#F2F1EB</color>
-    <color name="colorSecondary">#F25C05</color>
+    <color name="colorSecondary">#FF9434</color>
     <color name="colorSecondaryVariant">#65A603</color>
     <color name="colorOnSecondary">#242423</color>
     <color name="categoryButtom">#E2DB5B30</color>
-    <color name="areaButtom">#3F51B5</color>
+    <color name="colorMenu">#012340</color>
+
+    <!-- Color para  munu-ítem seleccionado -->
+    <color name="selected_item_color">#FF9434</color> <!-- Azul -->
+    <!-- Color para menu-ítem no seleccionado -->
+    <color name="unselected_item_color">#F2F1EB</color> <!-- Gris claro -->
 </resources>

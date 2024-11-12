@@ -49,6 +49,8 @@ class CategoriesActivity : AppCompatActivity() {
         enableEdgeToEdge()
         binding = ActivityCategoriesBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        // Cambiar color de fondo de la ActionBar
+        supportActionBar?.setBackgroundDrawable(ColorDrawable(ContextCompat.getColor(this, R.color.colorPrimary)))
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
