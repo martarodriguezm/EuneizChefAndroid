@@ -1,8 +1,10 @@
 package com.euneiz.euneizchef.database
 
 
+
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import java.io.Serializable
 
 @Entity(tableName = "favorite_recipes")
 data class FavoriteRecipe(
@@ -11,4 +13,4 @@ data class FavoriteRecipe(
     val strCategory: String,
     val strArea: String,
     val strMealThumb: String?
-)
+) : Serializable

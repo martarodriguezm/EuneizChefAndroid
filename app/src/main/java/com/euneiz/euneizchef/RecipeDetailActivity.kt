@@ -52,7 +52,8 @@ class RecipeDetailActivity : AppCompatActivity() {
         recipeDatabase = RecipeDatabase.getDatabase(this)
         favoriteDao = recipeDatabase.favoriteDao()
 
-        // Obtener datos del intent
+
+    // Obtener el objeto Recipe del Intent
         val recipe = intent.getSerializableExtra("recipe") as? Recipe
 
         recipe?.let {
