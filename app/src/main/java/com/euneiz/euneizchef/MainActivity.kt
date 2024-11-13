@@ -178,6 +178,18 @@ class MainActivity : AppCompatActivity() {
             .placeholder(R.drawable.ic_placeholder_image) // Imagen por defecto en caso de no tener imagen
             .into(binding.recipeImageView)
 
+        // Configurar el clic en la receta del día para abrir la pantalla de detalles
+        binding.dayRecipeContainer.setOnClickListener {
+            // Crear un Intent para abrir la RecipeDetailActivity
+            val intent = Intent(this, RecipeDetailActivity::class.java)
+
+            // Pasar los datos de la receta a la nueva actividad
+            intent.putExtra("recipe", recipe)  // Pasamos el objeto Recipe
+
+            // Iniciar la actividad de detalles de la receta
+            startActivity(intent)
+        }
+
         // Verificar si la receta ya está en favoritos para definir el estado inicial del botón
         CoroutineScope(Dispatchers.IO).launch {
             val existingFavorite = favoriteDao.getAllFavorites().find { it.idMeal == recipe.idMeal }
