@@ -17,4 +17,7 @@ interface FavoriteDao {
 
     @Query("SELECT * FROM favorite_recipes")
     suspend fun getAllFavorites(): List<FavoriteRecipe>
+
+    @Query("SELECT EXISTS(SELECT 1 FROM favorite_recipes WHERE idMeal = :idMeal)")
+    suspend fun isFavorite(idMeal: String): Boolean
 }

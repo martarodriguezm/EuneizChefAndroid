@@ -1,6 +1,8 @@
 package com.euneiz.euneizchef
 
+import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.webkit.WebSettings
 import android.webkit.WebView
@@ -8,20 +10,47 @@ import android.webkit.WebViewClient
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.bumptech.glide.Glide
+import com.euneiz.euneizchef.database.FavoriteDao
+import com.euneiz.euneizchef.database.FavoriteRecipe
+import com.euneiz.euneizchef.database.RecipeDatabase
+import com.euneiz.euneizchef.databinding.ActivityMainBinding
 import com.euneiz.euneizchef.databinding.ActivityRecipeDetailBinding
+import com.google.android.material.floatingactionbutton.FloatingActionButton
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 class RecipeDetailActivity : AppCompatActivity() {
     private lateinit var binding: ActivityRecipeDetailBinding
+    private lateinit var favoriteDao: FavoriteDao
+    private lateinit var recipeDatabase: RecipeDatabase
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        enableEdgeToEdge()
+
         binding = ActivityRecipeDetailBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        // Cambiar color de fondo de la ActionBar
+        supportActionBar?.setBackgroundDrawable(ColorDrawable(ContextCompat.getColor(this, R.color.colorPrimary)))
+
+        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
+            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
+            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
+            insets
+        }
+
+        // Inicializa la base de datos y DAO
+        recipeDatabase = RecipeDatabase.getDatabase(this)
+        favoriteDao = recipeDatabase.favoriteDao()
 
         // Obtener datos del intent
         val recipe = intent.getSerializableExtra("recipe") as? Recipe
@@ -48,6 +77,9 @@ class RecipeDetailActivity : AppCompatActivity() {
                 loadYoutubeVideo(videoId)
             }
 
+            // Configuración del botón de favoritos
+            setupFavoriteButton(recipe)
+
             // Configuración de ingredientes y medidas
             val ingredients = extractIngredients(it)
             if (ingredients.isNotEmpty()) {
@@ -57,8 +89,55 @@ class RecipeDetailActivity : AppCompatActivity() {
             // Manejo del caso en que la receta no se haya pasado correctamente
             finish() // Cierra la actividad si no se pudo cargar el objeto
         }
+
+        // Configuración del Floating Action Button para regresar
+        val fabBack: FloatingActionButton = binding.fabBack
+        fabBack.setOnClickListener {
+            onBackPressed()  // Esto manejará el regreso a la actividad anterior
+        }
     }
 
+    private fun setupFavoriteButton(recipe: Recipe) {
+        CoroutineScope(Dispatchers.IO).launch {
+            try {
+                val isFavorite = favoriteDao.isFavorite(recipe.idMeal)
+                withContext(Dispatchers.Main) {
+                    binding.favoriteButton.isSelected = isFavorite
+                }
+            } catch (e: Exception) {
+                Log.e("RecipeDetailActivity", "Error checking favorite status", e)
+            }
+        }
+
+        binding.favoriteButton.setOnClickListener {
+            it.isSelected = !it.isSelected
+            val favoriteRecipe = FavoriteRecipe(
+                idMeal = recipe.idMeal,
+                strMeal = recipe.strMeal,
+                strCategory = recipe.strCategory,
+                strArea = recipe.strArea,
+                strMealThumb = recipe.strMealThumb
+            )
+
+            CoroutineScope(Dispatchers.IO).launch {
+                try {
+                    if (it.isSelected) {
+                        favoriteDao.insertFavorite(favoriteRecipe)
+                        withContext(Dispatchers.Main) {
+                            Toast.makeText(binding.root.context, "La receta se ha añadido a favoritos", Toast.LENGTH_SHORT).show()
+                        }
+                    } else {
+                        favoriteDao.deleteFavorite(favoriteRecipe)
+                        withContext(Dispatchers.Main) {
+                            Toast.makeText(binding.root.context, "La receta se ha eliminado de favoritos", Toast.LENGTH_SHORT).show()
+                        }
+                    }
+                } catch (e: Exception) {
+                    Log.e("RecipeDetailActivity", "Error updating favorite status", e)
+                }
+            }
+        }
+    }
 
     private fun extractIngredients(recipe: Recipe): List<Pair<String, String>> {
         val ingredients = mutableListOf<Pair<String, String>>()
