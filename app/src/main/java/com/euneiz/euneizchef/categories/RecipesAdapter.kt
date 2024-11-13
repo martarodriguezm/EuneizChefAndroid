@@ -1,5 +1,6 @@
 package com.euneiz.euneizchef.categories
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.Toast
@@ -7,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.euneiz.euneizchef.R
 import com.euneiz.euneizchef.Recipe
+import com.euneiz.euneizchef.RecipeDetailActivity
 import com.euneiz.euneizchef.database.FavoriteDao
 import com.euneiz.euneizchef.database.FavoriteRecipe
 import com.euneiz.euneizchef.databinding.ItemRecipeBinding
@@ -93,6 +95,12 @@ class RecipesAdapter(private val favoriteDao: FavoriteDao) : RecyclerView.Adapte
                     }
                     Toast.makeText(binding.root.context, "La receta se ha eliminado de favoritos", Toast.LENGTH_SHORT).show()
                 }
+            }
+            binding.root.setOnClickListener {
+                val context = binding.root.context
+                val intent = Intent(context, RecipeDetailActivity::class.java)
+                intent.putExtra("recipe", recipe)
+                context.startActivity(intent)
             }
         }
     }
