@@ -30,19 +30,8 @@ import java.io.IOException
 
 class CategoriesActivity : AppCompatActivity() {
     private lateinit var binding: ActivityCategoriesBinding
-
-    // Lista de categorías de la API
-    private val categories = listOf(
-        "Beef", "Chicken", "Dessert", "Lamb", "Miscellaneous", "Pasta", "Pork",
-        "Seafood", "Side", "Starter", "Vegan", "Vegetarian", "Breakfast", "Goat"
-    )
-    // Lista de areas de la API
-    private val areas = listOf(
-        "American", "British", "Canadian", "Chinese", "Croatian", "Dutch", "Egyptian",
-        "Filipino", "French", "Greek", "Indian", "Irish", "Italian", "Jamaican", "Japanese",
-        "Kenyan", "Malaysian", "Mexican", "Moroccan", "Polish", "Portuguese", "Russian",
-        "Spanish", "Thai", "Tunisian", "Turkish", "Ukrainian", "Vietnamese"
-    )
+    private lateinit var areas: Array<String>
+    private lateinit var categories: Array<String>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -57,6 +46,12 @@ class CategoriesActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+
+        // Obtener la lista de áreas desde strings.xml
+        areas = resources.getStringArray(R.array.areas_list)
+
+        // Obtener la lista de categorias desde strings.xml
+        categories = resources.getStringArray(R.array.categories_list)
 
         // Marcar el ítem de categorías en el BottomNavigationView
         binding.bottomNavigationView.selectedItemId = R.id.nav_categories

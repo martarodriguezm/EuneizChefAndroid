@@ -11,6 +11,25 @@
     <!-- FavoritesActivity -->
     <string name="label_favoritesActivity">My Favorites</string>
     <string name="noFavoritesTextView">You have not added any recipes to your favorites yet</string>
+
+    <!-- CategoriesActivity -->
+    <string name="label_categoriesActivity">Discover Recipes</string>
+    <string name="textAreasSection">By Area</string>
+    <string name="textCategoriesSection">By Category</string>
+
+    <!-- CategoriesRecipesActivity -->
+    <string name="label_categoriesRecipesActivity">Category</string>
+    <!-- CategoriesRecipesActivity -->
+    <string name="label_areasRecipesActivity">Area</string>
+    <!-- SearchRecipesActivity -->
+    <string name="label_searchRecipesActivity">Search Recipes</string>
+
+    <!-- RecipeDetailsActivity -->
+    <string name="label_recipeDetailsActivity">Recipe</string>
+    <string name="textIngredients">Ingredients</string>
+    <string name="textTutorial">Tutorial</string>
+    <string name="textInstructions">Instructions</string>
+
     <!-- Areas -->
     <string-array name="areas_list">
         <item>American</item>
@@ -42,4 +61,22 @@
         <item>Ukrainian</item>
         <item>Vietnamese</item>
     </string-array>
+
+    <string-array name="categories_list">
+        <item>Beef</item>
+        <item>Chicken</item>
+        <item>Dessert</item>
+        <item>Lamb</item>
+        <item>Miscellaneous</item>
+        <item>Pasta</item>
+        <item>Pork</item>
+        <item>Seafood</item>
+        <item>Side</item>
+        <item>Starter</item>
+        <item>Vegan</item>
+        <item>Vegetarian</item>
+        <item>Breakfast</item>
+        <item>Goat</item>
+    </string-array>
+
 </resources>

@@ -19,7 +19,7 @@
         android:layout_marginRight="8dp"
         android:layout_marginTop="16dp"
         android:layout_marginBottom="16dp"
-        android:hint="Buscar recetas"
+        android:hint="@string/searchEditText"
         android:inputType="text"
         android:background="@drawable/search_edittext_background"
         android:padding="10dp"
@@ -49,11 +49,11 @@
         app:layout_constraintTop_toBottomOf="@id/searchEditText"
         app:layout_constraintBottom_toTopOf="@id/areaSection"
         android:layout_marginTop="20dp"
-        android:padding="10dp"
-        android:textStyle="bold"
-        android:textSize="16dp"
+        android:textSize="20sp"
         android:textColor="@color/black"
-        android:text="Por Area"/>
+        android:textStyle="bold"
+        android:padding="10dp"
+        android:text="@string/textAreasSection"/>
 
     <HorizontalScrollView
         android:id="@+id/areaSection"
@@ -77,10 +77,10 @@
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@id/areaSection"
         android:padding="10dp"
-        android:textStyle="bold"
-        android:textSize="16dp"
+        android:textSize="20sp"
         android:textColor="@color/black"
-        android:text="Por Categoría"/>
+        android:textStyle="bold"
+        android:text="@string/textCategoriesSection"/>
 
     <!-- res/layout/activity_categories.xml -->
     <ScrollView
@@ -104,6 +104,8 @@
         android:id="@+id/bottomNavigationView"
         android:background="@drawable/bottom_nav_background"
         android:layout_width="match_parent"
+        android:layout_marginRight="5dp"
+        android:layout_marginLeft="5dp"
         android:layout_height="wrap_content"
         android:paddingTop="10dp"
         app:layout_constraintBottom_toBottomOf="parent"

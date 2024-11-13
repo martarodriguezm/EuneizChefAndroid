@@ -20,7 +20,7 @@
         android:layout_marginRight="8dp"
         android:layout_marginTop="70dp"
         android:layout_marginBottom="16dp"
-        android:hint="Buscar recetas"
+        android:hint="@string/searchEditText"
         android:inputType="text"
         android:background="@drawable/search_edittext_background"
         android:padding="10dp"
@@ -42,16 +42,16 @@
         android:padding="12dp"
         android:scaleType="centerInside"/>
 
-    <!-- RecyclerView para mostrar los resultados -->
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recipesRecyclerView"
-        app:layout_constraintTop_toBottomOf="@id/searchEditText"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginTop="16dp"/>
+        <!-- RecyclerView para mostrar los resultados -->
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recipesRecyclerView"
+            app:layout_constraintTop_toBottomOf="@id/searchEditText"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_margin="16dp"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 

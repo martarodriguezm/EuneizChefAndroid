@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <style name="CategoryButtonStyle">
-        <item name="android:backgroundTint">@color/colorPrimaryVariant</item> <!-- Fondo del botón -->
-        <item name="android:textColor">@color/colorOnSecondary</item> <!-- Color del texto -->
+        <item name="android:backgroundTint">@color/categoryButtom</item> <!-- Fondo del botón -->
+        <item name="android:textColor">@color/colorPrimary</item> <!-- Color del texto -->
         <item name="android:layout_margin">4dp</item>
         <item name="android:textSize">14sp</item>
     </style>

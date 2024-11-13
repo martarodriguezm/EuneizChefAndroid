@@ -22,22 +22,22 @@
         <activity
             android:name=".categories.SearchResultsActivity"
             android:exported="false"
-            android:label="Search Recipes"
+            android:label="@string/label_searchRecipesActivity"
             android:parentActivityName=".CategoriesActivity" />
         <activity
             android:name=".categories.AreaRecipesActivity"
             android:exported="false"
-            android:label="Area"
+            android:label="@string/label_areasRecipesActivity"
             android:parentActivityName=".CategoriesActivity" />
         <activity
             android:name=".categories.CategoryRecipesActivity"
             android:exported="false"
-            android:label="Category"
+            android:label="@string/label_categoriesRecipesActivity"
             android:parentActivityName=".CategoriesActivity" />
         <activity
             android:name=".CategoriesActivity"
             android:exported="false"
-            android:label="Discover Recipes" />
+            android:label="@string/label_categoriesActivity" />
         <activity
             android:name=".FavoritesActivity"
             android:exported="false"

@@ -6,7 +6,9 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="10dp"
+    android:layout_marginTop="20dp"
+    android:layout_marginLeft="5dp"
+    android:layout_marginRight="5dp"
     app:cardCornerRadius="8dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -16,7 +18,7 @@
         <ImageView
             android:id="@+id/recipeImageView"
             app:layout_constraintLeft_toLeftOf="parent"
-            android:layout_width="100dp"
+            android:layout_width="130dp"
             android:layout_height="100dp"
             android:scaleType="centerCrop"
             android:src="@drawable/ic_placeholder_image"/>
@@ -24,44 +26,38 @@
         <TextView
             android:id="@+id/recipeTitleTextView"
             app:layout_constraintLeft_toRightOf="@id/recipeImageView"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_margin="20dp"
+            android:layout_margin="10dp"
+            android:paddingTop="10dp"
+            android:paddingRight="10dp"
             android:textStyle="bold"
+            android:textSize="16dp"
             android:textColor="@color/black"
-            android:text="titulo"/>
-
-        <TextView
-            android:id="@+id/recipeAreaTextView"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintLeft_toRightOf="@id/recipeImageView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="20dp"
-            android:textColor="@color/gray"
-            android:text="italia"/>
-
-        <ImageView
-            android:id="@+id/AreaImageView"
-            app:layout_constraintLeft_toRightOf="@id/recipeAreaTextView"
-            app:layout_constraintBottom_toBottomOf="parent"
-            android:layout_width="20dp"
-            android:layout_height="20dp"
-            android:layout_marginBottom="20dp"
-            android:layout_marginLeft="10dp"
-            android:scaleType="centerCrop"
-            android:src="@drawable/ic_placeholder_image"/>
+            android:text="Title"/>
 
         <TextView
             android:id="@+id/recipeCategoryTextView"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintLeft_toRightOf="@id/AreaImageView"
+            app:layout_constraintLeft_toRightOf="@id/recipeImageView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
             android:layout_marginBottom="20dp"
-            android:layout_marginLeft="40dp"
             android:textColor="@color/gray"
-            android:text="Categoria"/>
+            android:text="Category"/>
+
+
+        <TextView
+            android:id="@+id/recipeAreaTextView"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toRightOf="@id/recipeCategoryTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            android:textColor="@color/gray"
+            android:text="Area"/>
+
 
         <ImageButton
             android:id="@+id/favoriteButton"
