@@ -4,6 +4,7 @@ import android.content.Intent
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
@@ -85,7 +86,16 @@ class FavoritesActivity : AppCompatActivity() {
         CoroutineScope(Dispatchers.IO).launch {
             val favoriteRecipes = db.favoriteDao().getAllFavorites()  // Obtener recetas favoritas
             CoroutineScope(Dispatchers.Main).launch {
-                favoritesAdapter.submitList(favoriteRecipes)  // Pasar las recetas al adaptador
+                if (favoriteRecipes.isEmpty()) {
+                    // Si la lista está vacía, mostrar el mensaje
+                    binding.noFavoritesTextView.visibility = View.VISIBLE
+                } else {
+                    // Si hay recetas, ocultar el mensaje
+                    binding.noFavoritesTextView.visibility = View.GONE
+                }
+
+                // Pasar las recetas al adaptador
+                favoritesAdapter.submitList(favoriteRecipes)
             }
         }
     }

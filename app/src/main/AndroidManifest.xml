@@ -15,9 +15,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.EuneizChef"
         tools:targetApi="31">
-        <activity
-            android:name=".database.FavoriteRecipeDetailActivity"
-            android:exported="false" />
+
         <activity
             android:name=".RecipeDetailActivity"
             android:exported="false" />
@@ -43,11 +41,11 @@
         <activity
             android:name=".FavoritesActivity"
             android:exported="false"
-            android:label="My Favorites" />
+            android:label="@string/label_favoritesActivity" />
         <activity
             android:name=".MainActivity"
             android:exported="true"
-            android:label="Welcome to EuneizChef">
+            android:label="@string/label_mainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

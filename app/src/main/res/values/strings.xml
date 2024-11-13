@@ -2,10 +2,15 @@
     <string name="app_name">EuneizChef</string>
 
     <!-- MainActivity -->
+    <string name="label_mainActivity">Welcome to EuneizChef</string>
     <string name="headerTitle">What do you want to eat today?</string>
     <string name="searchEditText">Search recipes</string>
     <string name="daySectionTitle">Day recipe</string>
     <string name="areaSectionTitle">Discover recipes worldwide</string>
+
+    <!-- FavoritesActivity -->
+    <string name="label_favoritesActivity">My Favorites</string>
+    <string name="noFavoritesTextView">You have not added any recipes to your favorites yet</string>
     <!-- Areas -->
     <string-array name="areas_list">
         <item>American</item>

@@ -101,7 +101,7 @@ class FavoritesAdapter(private val favoriteDao: FavoriteDao) : RecyclerView.Adap
                 if (response.isSuccessful) {
                     val recipeDetailsResponse = response.body()
                     recipeDetailsResponse?.meals?.firstOrNull()?.let { meal ->
-                        // Aquí se mapea la respuesta a nuestro modelo Recipe
+                        // Se mapea la respuesta a nuestro modelo Recipe
                         Recipe(
                             idMeal = meal.idMeal,
                             strMeal = meal.strMeal,
