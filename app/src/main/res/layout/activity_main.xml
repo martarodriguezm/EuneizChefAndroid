@@ -39,7 +39,7 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            android:text="What do you want to eat today?"/>
+            android:text="@string/headerTitle"/>
 
         <!-- Campo de búsqueda -->
         <LinearLayout
@@ -58,7 +58,7 @@
                 android:layout_marginRight="8dp"
                 android:layout_marginTop="16dp"
                 android:layout_marginBottom="16dp"
-                android:hint="Buscar recetas"
+                android:hint="@string/searchEditText"
                 android:inputType="text"
                 android:background="@drawable/search_edittext_background"
                 android:padding="10dp"
@@ -84,14 +84,14 @@
             app:layout_constraintTop_toBottomOf="@id/searchBarContainer"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="22sp"
+            android:textSize="20sp"
             android:textColor="@color/black"
             android:textStyle="bold"
             android:paddingTop="20dp"
             android:paddingLeft="20dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            android:text="Day recipe"/>
+            android:text="@string/daySectionTitle"/>
 
         <androidx.cardview.widget.CardView
             android:id="@+id/dayRecipeContainer"
@@ -109,7 +109,7 @@
                     android:id="@+id/recipeImageView"
                     app:layout_constraintLeft_toLeftOf="parent"
                     android:layout_width="wrap_content"
-                    android:layout_height="170dp"
+                    android:layout_height="150dp"
                     android:scaleType="centerCrop"
                     android:src="@drawable/ic_placeholder_image"/>
 
@@ -118,30 +118,34 @@
                     app:layout_constraintTop_toBottomOf="@id/recipeImageView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:padding="20dp"
+                    android:padding="15dp"
                     android:textStyle="bold"
-                    android:textSize="22dp"
+                    android:textSize="18dp"
                     android:textColor="@color/black"
-                    android:text="titulo"/>
+                    android:text="Title"/>
 
                 <TextView
                     android:id="@+id/recipeAreaTextView"
                     app:layout_constraintTop_toBottomOf="@id/recipeTitleTextView"
+                    app:layout_constraintLeft_toRightOf="@id/recipeCategoryTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:paddingLeft="20dp"
+                    android:paddingLeft="60dp"
+                    android:paddingBottom="15dp"
+                    android:textSize="14dp"
                     android:textColor="@color/gray"
-                    android:text="italia"/>
+                    android:text="Area"/>
 
                 <TextView
                     android:id="@+id/recipeCategoryTextView"
-                    app:layout_constraintTop_toBottomOf="@id/recipeAreaTextView"
+                    app:layout_constraintTop_toBottomOf="@id/recipeTitleTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:paddingLeft="20dp"
                     android:paddingBottom="15dp"
-                    android:textColor="@color/gray"
-                    android:text="Categoria"/>
+                    android:textSize="14dp"
+                    android:textColor="@color/colorPrimaryVariant"
+                    android:text="Category"/>
 
                 <ImageButton
                     android:id="@+id/favoriteButton"
@@ -149,11 +153,10 @@
                     app:layout_constraintRight_toRightOf="parent"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_margin="10dp"
                     android:src="@drawable/favorite_selector"
                     android:background="?attr/selectableItemBackgroundBorderless"
                     android:contentDescription="favorite"
-                    android:padding="8dp"/>
+                    android:padding="15dp"/>
 
             </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.cardview.widget.CardView>
@@ -163,13 +166,14 @@
             app:layout_constraintTop_toBottomOf="@id/dayRecipeContainer"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="22sp"
+            android:textSize="20sp"
             android:textColor="@color/black"
             android:textStyle="bold"
-            android:padding="20dp"
+            android:paddingBottom="20dp"
+            android:paddingLeft="20dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            android:text="Discover recipes worldwide"/>
+            android:text="@string/areaSectionTitle"/>
 
         <HorizontalScrollView
             android:id="@+id/areaSection"

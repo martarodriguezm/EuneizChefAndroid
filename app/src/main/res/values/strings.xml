@@ -1,3 +1,40 @@
 <resources>
     <string name="app_name">EuneizChef</string>
+
+    <!-- MainActivity -->
+    <string name="headerTitle">What do you want to eat today?</string>
+    <string name="searchEditText">Search recipes</string>
+    <string name="daySectionTitle">Day recipe</string>
+    <string name="areaSectionTitle">Discover recipes worldwide</string>
+    <!-- Areas -->
+    <string-array name="areas_list">
+        <item>American</item>
+        <item>British</item>
+        <item>Canadian</item>
+        <item>Chinese</item>
+        <item>Croatian</item>
+        <item>Dutch</item>
+        <item>Egyptian</item>
+        <item>Filipino</item>
+        <item>French</item>
+        <item>Greek</item>
+        <item>Indian</item>
+        <item>Irish</item>
+        <item>Italian</item>
+        <item>Jamaican</item>
+        <item>Japanese</item>
+        <item>Kenyan</item>
+        <item>Malaysian</item>
+        <item>Mexican</item>
+        <item>Moroccan</item>
+        <item>Polish</item>
+        <item>Portuguese</item>
+        <item>Russian</item>
+        <item>Spanish</item>
+        <item>Thai</item>
+        <item>Tunisian</item>
+        <item>Turkish</item>
+        <item>Ukrainian</item>
+        <item>Vietnamese</item>
+    </string-array>
 </resources>

@@ -44,15 +44,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var apiService: ApiService
     private lateinit var favoriteDao: FavoriteDao
     private lateinit var recipeDatabase: RecipeDatabase
-
-
-    // Lista de areas de la API
-    private val areas = listOf(
-        "American", "British", "Canadian", "Chinese", "Croatian", "Dutch", "Egyptian",
-        "Filipino", "French", "Greek", "Indian", "Irish", "Italian", "Jamaican", "Japanese",
-        "Kenyan", "Malaysian", "Mexican", "Moroccan", "Polish", "Portuguese", "Russian",
-        "Spanish", "Thai", "Tunisian", "Turkish", "Ukrainian", "Vietnamese"
-    )
+    private lateinit var areas: Array<String>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -60,6 +52,7 @@ class MainActivity : AppCompatActivity() {
 
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.main)
+
         // Cambiar color de fondo de la ActionBar
         supportActionBar?.setBackgroundDrawable(ColorDrawable(ContextCompat.getColor(this, R.color.colorPrimary)))
 
@@ -69,8 +62,14 @@ class MainActivity : AppCompatActivity() {
             insets
         }
 
-        apiService = ApiService.create() // Crear la instancia del servicio API
-        loadRecipeOfTheDay() // Cargar receta del día
+        // Obtener la lista de áreas desde strings.xml
+        areas = resources.getStringArray(R.array.areas_list)
+
+        // Instancia del servicio API
+        apiService = ApiService.create()
+
+        // Cargar receta del día
+        loadRecipeOfTheDay()
 
         // Inicializa la base de datos y DAO
         recipeDatabase = RecipeDatabase.getDatabase(this)
